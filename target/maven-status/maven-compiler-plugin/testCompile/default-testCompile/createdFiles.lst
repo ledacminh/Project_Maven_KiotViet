@@ -1,0 +1,4 @@
+minhle\actions\GlobalConstants.class
+minhle\actions\BaseTest.class
+minhle\testcases\LoginTCs.class
+minhle\actions\BasePage.class
