@@ -1,4 +1,4 @@
-package minhle.actions;
+package minhle.actions.commons;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -22,25 +22,29 @@ public class BaseTest {
         switch (browser) {
             case CHROME :
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case EDGE :
                 WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--remote-allow-origins=*");
+                driver = new EdgeDriver(edgeOptions);
                 break;
             case FIREFOX :
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
             case HEDGE:
-                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--headless");
                 edgeOptions.setHeadless(true);
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver(edgeOptions);
                 break;
             case HCHROME:
-                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless");
                 chromeOptions.setHeadless(true);
                 WebDriverManager.chromedriver().setup();
@@ -57,7 +61,13 @@ public class BaseTest {
                 throw new RuntimeException("Please enter correct browser name");
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().maximize();
+        driver.get(url);
         return driver;
-
     }
+
+    public void CloseBrowser() {
+        driver.quit();
+    }
+
 }
