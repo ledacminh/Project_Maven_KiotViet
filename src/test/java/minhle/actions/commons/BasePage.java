@@ -1,24 +1,27 @@
 package minhle.actions.commons;
 
+import minhle.commons.GlobalConstants;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
 public class BasePage {
-    JavascriptExecutor javascriptExecutor;
-    Actions actions;
-    WebDriverWait explicit;
+    private JavascriptExecutor javascriptExecutor;
+    private Actions actions;
+    private WebDriverWait explicit;
+
     public By getXpath(String locator) {
         return By.xpath(locator);
     }
 
     public By getDynamicXpath(String locator, String... params) {
-       return By.xpath(String.format(locator, (Object[]) params));
+        return By.xpath(String.format(locator, (Object[]) params));
     }
 
     public WebElement getElement(WebDriver driver, String locator) {
@@ -32,6 +35,7 @@ public class BasePage {
     public List<WebElement> getElements(WebDriver driver, String locator, String... params) {
         return driver.findElements(getDynamicXpath(locator, params));
     }
+
     public void clickToElement(WebDriver driver, String locator) {
         waitForElementIsVisible(driver, locator);
         waitForElementClickable(driver, locator);
@@ -52,13 +56,13 @@ public class BasePage {
 
     public void waitForElementClickable(WebDriver driver, String locator) {
         waitForElementIsVisible(driver, locator);
-        explicit = new WebDriverWait(driver,Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT));
+        explicit = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT));
         explicit.until(ExpectedConditions.elementToBeClickable(getXpath(locator)));
     }
 
     public void waitForElementClickable(WebDriver driver, String locator, String... params) {
         waitForElementIsVisible(driver, locator, params);
-        explicit = new WebDriverWait(driver,Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT));
+        explicit = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.SHORT_TIMEOUT));
         explicit.until(ExpectedConditions.elementToBeClickable(getDynamicXpath(locator, params)));
     }
 
@@ -85,7 +89,8 @@ public class BasePage {
         waitForElementIsVisible(driver, locator, params);
         actions.sendKeys(getDynamicElement(driver, locator, params), value).perform();
     }
-    public String getTextElement(WebDriver driver, String locator){
+
+    public String getTextElement(WebDriver driver, String locator) {
         waitForElementIsVisible(driver, locator);
         return getElement(driver, locator).getText().trim();
     }
@@ -94,7 +99,8 @@ public class BasePage {
         WebElement element = getDynamicElement(driver, locator, params);
         return element.getText().trim();
     }
-    public void hoverToElement(WebDriver driver, String locator){
+
+    public void hoverToElement(WebDriver driver, String locator) {
         actions = new Actions(driver);
         waitForElementIsVisible(driver, locator);
         actions.clickAndHold(getElement(driver, locator)).perform();
@@ -102,33 +108,36 @@ public class BasePage {
 
     public void hoverToElement(WebDriver driver, String locator, String... params) {
         actions = new Actions(driver);
-        waitForElementIsVisible(driver,locator,params);
-        actions.clickAndHold(getDynamicElement(driver,locator,params)).perform();
+        waitForElementIsVisible(driver, locator, params);
+        actions.clickAndHold(getDynamicElement(driver, locator, params)).perform();
     }
-    public void SleepInSecond(int second)   {
+
+    public void SleepInSecond(int second) {
         try {
             Thread.sleep(second * 1000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
     public void clickToElementByJS(WebDriver driver, String locator) {
         waitForElementClickable(driver, locator);
         javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].click;", getElement(driver, locator));
     }
+
     public String getDynamicLocator(String locator, String... params) {
         return String.format(locator, (Object[]) params);
     }
 
     public WebElement getDynamicElement(WebDriver driver, String locator, String... params) {
-        locator = getDynamicLocator(locator,params);
-        return getElement(driver,locator);
+        locator = getDynamicLocator(locator, params);
+        return getElement(driver, locator);
     }
 
-    public boolean isDiplayElement(WebDriver driver, String locator ) {
-        waitForElementIsVisible(driver,locator);
-        return getElement(driver,locator).isDisplayed();
+    public boolean isDiplayElement(WebDriver driver, String locator) {
+        waitForElementIsVisible(driver, locator);
+        return getElement(driver, locator).isDisplayed();
     }
 
     public boolean isDiplayElement(WebDriver driver, String locator, String... params) {
@@ -186,8 +195,8 @@ public class BasePage {
 
     public void switchWindowByID(WebDriver driver, String expectedID) {
         Set<String> allTabIDs = driver.getWindowHandles();
-        for (String id: allTabIDs) {
-            if(id.equals(expectedID)) {
+        for (String id : allTabIDs) {
+            if (id.equals(expectedID)) {
                 driver.switchTo().window(id);
                 break;
             }
@@ -196,10 +205,10 @@ public class BasePage {
 
     public void switchWindowByTitle(WebDriver driver, String expectedTitle) {
         Set<String> allTabIDs = driver.getWindowHandles();
-        for (String id: allTabIDs) {
+        for (String id : allTabIDs) {
             driver.switchTo().window(id);
             String actualTitle = driver.getTitle().trim();
-            if(actualTitle.equals(expectedTitle)) {
+            if (actualTitle.equals(expectedTitle)) {
                 break;
             }
         }
@@ -207,8 +216,8 @@ public class BasePage {
 
     public boolean closeAllWindowsWithoutParent(WebDriver driver, String parentId) {
         Set<String> allWindows = driver.getWindowHandles();
-        for (String runWindow: allWindows) {
-            if(!runWindow.equals(parentId)) {
+        for (String runWindow : allWindows) {
+            if (!runWindow.equals(parentId)) {
                 driver.switchTo().window(runWindow);
                 driver.close();
             }
@@ -268,28 +277,28 @@ public class BasePage {
 
     public void checkToCheckboxOrRadio(WebDriver driver, String locator) {
         WebElement element = getElement(driver, locator);
-        if(!element.isSelected()) {
+        if (!element.isSelected()) {
             element.click();
         }
     }
 
     public void checkToCheckboxOrRadio(WebDriver driver, String locator, String... params) {
         WebElement element = getDynamicElement(driver, locator, params);
-        if(!element.isSelected()) {
+        if (!element.isSelected()) {
             element.click();
         }
     }
 
     public void unCheckToCheckbox(WebDriver driver, String locator) {
         WebElement element = getElement(driver, locator);
-        if(element.isSelected()) {
+        if (element.isSelected()) {
             element.click();
         }
     }
 
     public void unCheckToCheckbox(WebDriver driver, String locator, String... params) {
         WebElement element = getDynamicElement(driver, locator, params);
-        if(element.isSelected()) {
+        if (element.isSelected()) {
             element.click();
         }
     }
@@ -349,13 +358,13 @@ public class BasePage {
         actions.sendKeys(getDynamicElement(driver, locator, params), keys).perform();
     }
 
-    public boolean isDiplayElements(WebDriver driver, String locator ) {
-        waitForElementIsVisible(driver,locator);
-        return getElement(driver,locator).isDisplayed();
+    public boolean isDiplayElements(WebDriver driver, String locator) {
+        waitForElementIsVisible(driver, locator);
+        return getElement(driver, locator).isDisplayed();
     }
 
-    public boolean isDiplayElements(WebDriver driver, String locator, String... params ) {
-        waitForElementIsVisible(driver,locator, params);
-        return getDynamicElement(driver,locator, params).isDisplayed();
+    public boolean isDiplayElements(WebDriver driver, String locator, String... params) {
+        waitForElementIsVisible(driver, locator, params);
+        return getDynamicElement(driver, locator, params).isDisplayed();
     }
 }

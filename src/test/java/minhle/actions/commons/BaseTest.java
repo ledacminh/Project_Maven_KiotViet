@@ -1,6 +1,7 @@
 package minhle.actions.commons;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import minhle.commons.GlobalConstants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 import java.time.Duration;
 
 public class BaseTest {
@@ -17,22 +19,22 @@ public class BaseTest {
         CHROME, EDGE, FIREFOX, HCHROME, HEDGE, HFIREFOX
     }
 
-    public WebDriver getBrowserDriver(String browserName, String url){
+    public WebDriver getBrowserDriver(String browserName, String url) {
         BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
         switch (browser) {
-            case CHROME :
+            case CHROME:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 driver = new ChromeDriver(chromeOptions);
                 break;
-            case EDGE :
+            case EDGE:
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
                 driver = new EdgeDriver(edgeOptions);
                 break;
-            case FIREFOX :
+            case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
