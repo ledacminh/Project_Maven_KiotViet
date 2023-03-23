@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class ListDataLoginProperties {
-    private static Map<String, String> mapDataProperties = new HashMap<String, String>();
+    private static final Map<String, String> mapDataProperties = new HashMap<String, String>();
     static {
         try {
             Properties properties = new Properties();

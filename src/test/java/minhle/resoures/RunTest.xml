@@ -1,10 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite thread-count="2" name="Suite Login" parallel="false">
     <test name="Run on Chrome">
+        <parameter name="isDeletedImage" value="true"/>
+        <parameter name="isDeletedVideo" value="true"/>
         <parameter name="browser" value="chrome"/>
         <parameter name="url" value="https://fnb.kiotviet.vn/autotest1111"/>
         <classes>
-            <class name="minhle.testcases.LoginTestCases"/>
+            <class name="minhle.testcases.LoginTestCase"/>
         </classes>
     </test>
 

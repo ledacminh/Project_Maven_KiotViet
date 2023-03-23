@@ -1,7 +1,11 @@
 package minhle.actions.commons;
 
+import atu.testrecorder.ATUTestRecorder;
+import atu.testrecorder.exceptions.ATUTestRecorderException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import minhle.commons.GlobalConstants;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,11 +13,15 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.io.FileHandler;
+import org.testng.ITestResult;
 
+import java.io.File;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver;
+    private WebDriver driver;
+    private ATUTestRecorder recorder;
 
     private enum BROWSER {
         CHROME, EDGE, FIREFOX, HCHROME, HEDGE, HFIREFOX
@@ -68,6 +76,41 @@ public class BaseTest {
         return driver;
     }
 
+    public void takeScreenshots(ITestResult iTestResult) {
+        if (ITestResult.SUCCESS == iTestResult.getStatus()) {
+            try {
+                TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+                File file = takesScreenshot.getScreenshotAs(OutputType.FILE);
+                File directory = new File(GlobalConstants.TAKE_SCREENSHOTS_PATH);
+                if (!directory.exists()) {
+                    boolean isCreated = directory.mkdirs();
+                    if (!isCreated) {
+                        throw new RuntimeException("[BaseTest][takeScreenshots] Created unsuccessfully");
+                    }
+                }
+                FileHandler.copy(file, new File(GlobalConstants.TAKE_SCREENSHOTS_PATH + iTestResult.getName() + "_" + GlobalConstants.CURRENT_DATE_TIME + ".png"));
+            } catch (Exception e) {
+                throw new RuntimeException("[BaseTest][takeScreenshots] Exception while taking screenshot " + e.getMessage());
+            }
+        }
+    }
+
+    public void startRecording() {
+        try {
+            recorder = new ATUTestRecorder(GlobalConstants.TAKE_VIDEO_PATH, this.getClass().getName() + "_" + GlobalConstants.CURRENT_DATE_TIME, false);
+            recorder.start();
+        } catch (ATUTestRecorderException e) {
+            throw new RuntimeException("[BaseTest][startRecording] " + e.getMessage());
+        }
+    }
+
+    public void stopRecording() {
+        try {
+            recorder.stop();
+        } catch (ATUTestRecorderException e) {
+            throw new RuntimeException("[BaseTest][stopRecording] " + e.getMessage());
+        }
+    }
     public void CloseBrowser() {
         driver.quit();
     }

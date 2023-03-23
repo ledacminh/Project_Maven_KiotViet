@@ -4,7 +4,7 @@ import minhle.actions.LoginActions;
 import minhle.actions.TongQuanActions;
 import org.openqa.selenium.WebDriver;
 
-public class PageGeneraterManager {
+public class PageGenerateManager {
 
     public static LoginActions getLoginPage(WebDriver driver) {
         return new LoginActions(driver);

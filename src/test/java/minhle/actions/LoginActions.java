@@ -1,8 +1,7 @@
 package minhle.actions;
 
 import minhle.actions.commons.BasePage;
-import minhle.commons.GlobalConstants;
-import minhle.actions.commons.PageGeneraterManager;
+import minhle.actions.commons.PageGenerateManager;
 import minhle.interfaces.LoginInterface;
 import minhle.interfaces.TongQuanInterface;
 import minhle.ultilities.ListDataLoginProperties;
@@ -35,7 +34,7 @@ public class LoginActions extends BasePage {
 
     public void clickButtonLogin() {
         clickToElement(driver, LoginInterface.BUTTON_QUAN_LY);
-        SleepInSecond(10);
+        SleepInSecond(5);
     }
 
     public void loginSuccessfully() {
@@ -43,7 +42,7 @@ public class LoginActions extends BasePage {
         nhapTenDangNhap(ListDataLoginProperties.getString("ten_dang_nhap"));
         nhapMatKhau(ListDataLoginProperties.getString("mat_khau"));
         clickButtonLogin();
-        tongQuan = PageGeneraterManager.getTongQuanPage(driver);
+        tongQuan = PageGenerateManager.getTongQuanPage(driver);
         Assert.assertTrue(isDiplayElements(driver, TongQuanInterface.TONG_QUAN_HEADER));
     }
 

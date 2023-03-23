@@ -13,12 +13,10 @@ public class ExcelHelpers {
     private Workbook workbook;
     private Sheet sheet;
     private Cell cell;
-    private Row row;
     private final Map<String, Integer> columns = new HashMap<>();
 
     public void setExcelFile(String excelPath, String sheetName) {
         try {
-            File file = new File(excelPath);
             fileInputStream = new FileInputStream(excelPath);
             workbook = WorkbookFactory.create(fileInputStream);
             sheet = workbook.getSheet(sheetName);
@@ -76,7 +74,7 @@ public class ExcelHelpers {
     public void setCellData(String text, int rowNum, int colNum, String excelPath, String sheetName) {
         try {
             setExcelFile(excelPath, sheetName);
-            row = sheet.getRow(rowNum);
+            Row row = sheet.getRow(rowNum);
             if (row == null) {
                 row = sheet.createRow(rowNum);
             }

@@ -6,11 +6,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Properties;
 
 public class PropertyFile {
 
-    public static String getPropValue(String keyProp, String path) {
+    public static String getPropValue(String keyProp, String path) throws IOException {
         FileInputStream fileInputStream = null;
         String value = "";
         try {
@@ -23,18 +25,13 @@ public class PropertyFile {
         } catch (Exception exp) {
             throw new RuntimeException(exp.getMessage());
         } finally {
-            if (fileInputStream != null ) {
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            if (fileInputStream != null)
+                fileInputStream.close();
         }
         return value;
     }
 
-    public static void setPropValue(String keyProp, String value, String path) throws RuntimeException {
+    public static void setPropValue(String keyProp, String value, String path) throws RuntimeException, IOException {
         OutputStream outputStream = null;
         try {
             Properties properties = new Properties();
@@ -45,17 +42,13 @@ public class PropertyFile {
         } catch (Exception exp) {
             throw new RuntimeException(exp.getMessage());
         } finally {
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (Exception e) {
-                    throw new RuntimeException(e.getMessage());
-                }
-            }
+            if (outputStream != null)
+                outputStream.close();
         }
     }
 
     public static void main(String[] args) {
-//        System.out.println(DataProperties.mapDataProperties.toString());
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(Calendar.getInstance().getTime());
+        System.out.println("CurentDate = " + currentDate);
     }
 }
