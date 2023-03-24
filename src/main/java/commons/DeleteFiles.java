@@ -39,4 +39,9 @@ public class DeleteFiles {
             }
         }
     }
+
+    public static void main(String[] args) {
+        DeleteFiles.cleanDirectory(GlobalConstants.TAKE_VIDEO_PATH);
+        DeleteFiles.cleanDirectory(GlobalConstants.TAKE_SCREENSHOTS_PATH);
+    }
 }

@@ -20,7 +20,7 @@ import java.io.File;
 import java.time.Duration;
 
 public class BaseTest {
-    protected static WebDriver driver;
+    private static WebDriver driver;
     private ATUTestRecorder recorder;
 
     private enum BROWSER {
@@ -76,13 +76,14 @@ public class BaseTest {
         return driver;
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driver;
     }
+
     public void takeScreenshots(ITestResult iTestResult) {
         if (ITestResult.SUCCESS == iTestResult.getStatus()) {
             try {
-                TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
+                TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
                 File file = takesScreenshot.getScreenshotAs(OutputType.FILE);
                 File directory = new File(GlobalConstants.TAKE_SCREENSHOTS_PATH);
                 if (!directory.exists()) {
@@ -97,6 +98,7 @@ public class BaseTest {
             }
         }
     }
+
     public void takeScreenshots(WebDriver driver, ITestResult iTestResult) {
         if (ITestResult.SUCCESS == iTestResult.getStatus()) {
             try {
@@ -132,6 +134,7 @@ public class BaseTest {
             throw new RuntimeException("[BaseTest][stopRecording] " + e.getMessage());
         }
     }
+
     public void CloseBrowser() {
         driver.quit();
     }

@@ -11,13 +11,13 @@ public class TestListener extends BaseTest implements ITestListener {
 
     @Override
     public void onStart(ITestContext result) {
-        System.out.println("Bắt đầu thực hiện chạy test case " + result.getName());
+        Log.info("Bắt đầu thực hiện chạy test case " + result.getName());
 
     }
 
     @Override
     public void onFinish(ITestContext result) {
-        System.out.println("Kết thúc thực hiện chạy test case " + result.getName());
+        Log.info("Kết thúc thực hiện chạy test case " + result.getName());
 
     }
 
@@ -29,14 +29,13 @@ public class TestListener extends BaseTest implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        Log.info("Đây là test case chạy thất bại " + result.getName());
+        Log.info("[" + result.getName() + "] " + "[FAILED]");
 
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        takeScreenshots(getDriver(), result);
-        Log.info("[" + result.getName() + "] " + "[PASS]");
+        Log.info("[" + result.getName() + "] " + "[PASSED]");
 
     }
 

@@ -4,9 +4,6 @@
        <listener class-name="actions.commons.TestListener"/>
     </listeners>
     <test name="Run on Chrome">
-        <parameter name="isDeletedImage" value="true"/>
-        <parameter name="isDeletedVideo" value="true"/>
-        <parameter name="isRecorded" value="false"/>
         <parameter name="browser" value="chrome"/>
         <parameter name="url" value="https://fnb.kiotviet.vn/autotest1111"/>
         <classes>
