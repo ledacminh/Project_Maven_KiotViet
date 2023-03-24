@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ATUTestRecorder_2.1 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/test/java/libraries/ATUTestRecorder_2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

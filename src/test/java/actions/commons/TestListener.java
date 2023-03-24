@@ -1,5 +1,6 @@
 package actions.commons;
 
+import commons.Log;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -28,13 +29,14 @@ public class TestListener extends BaseTest implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("Đây là test case chạy thất bại " + result.getName());
+        Log.info("Đây là test case chạy thất bại " + result.getName());
 
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         takeScreenshots(getDriver(), result);
+        Log.info("[" + result.getName() + "] " + "[PASS]");
 
     }
 
