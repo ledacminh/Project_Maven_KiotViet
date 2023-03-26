@@ -1,0 +1,9 @@
+{
+  "password": "123",
+  "userName": "admin",
+  "email": "admin@gmail.com",
+  "listUsers": {
+    "Age": "18",
+    "Address": "30"
+  }
+}

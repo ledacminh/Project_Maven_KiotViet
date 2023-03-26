@@ -4,8 +4,8 @@
        <listener class-name="actions.commons.TestListener"/>
     </listeners>
     <test name="Run on Chrome">
-        <parameter name="browser" value="chrome"/>
-        <parameter name="url" value="https://fnb.kiotviet.vn/autotest1111"/>
+        <parameter name="browserName" value="chrome"/>
+        <parameter name="environmentName" value="staging"/>
         <classes>
             <class name="testcases.LoginTestCase"/>
         </classes>

@@ -17,6 +17,7 @@ public class GlobalConstants {
     public static final String DOI_TAC_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "datas" + SLASH + "doitac.properties";
     public static final String TAKE_SCREENSHOTS_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "screenshots" + SLASH;
     public static final String TAKE_VIDEO_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "videos" + SLASH;
+    public static final String DATA_JSON = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "datas" + SLASH + "data.json";
     public static final String CURRENT_DATE_TIME = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss").format(Calendar.getInstance().getTime());
 
 

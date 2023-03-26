@@ -5,10 +5,9 @@ import actions.commons.BaseTest;
 import actions.commons.PageGenerateManager;
 import actions.commons.ReportListener;
 import commons.Log;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
+import environment.Environment;
 import io.qameta.allure.Step;
+import org.aeonbits.owner.ConfigFactory;
 import ultilities.ListDataLoginProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -16,17 +15,18 @@ import org.testng.annotations.*;
 
 @Listeners(ReportListener.class)
 public class LoginTestCase extends BaseTest {
+    Environment environment;
     private LoginActions login;
 
-    @Parameters({"browser", "url"})
+    @Parameters({"browserName", "environmentName"})
     @BeforeMethod
-    public void initBrowser(String browserName, String url) {
-        WebDriver driver = getBrowserDriver(browserName, url);
+    public void initBrowser(String browserName, String environmentName) {
+        ConfigFactory.setProperty("environment",environmentName);
+        environment = ConfigFactory.create(Environment.class);
+        WebDriver driver = getBrowserDriver(browserName, environment.url());
         login = PageGenerateManager.getLoginPage(driver);
     }
 
-    @Severity(SeverityLevel.CRITICAL)
-    @Description("Đăng nhập thành công")
     @Step("Login thành công")
     @Test(description = "Đăng nhập thành công!")
     public void Test_Login_01() {

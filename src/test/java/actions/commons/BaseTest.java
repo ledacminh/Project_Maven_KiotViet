@@ -27,6 +27,9 @@ public class BaseTest {
         CHROME, EDGE, FIREFOX, HCHROME, HEDGE, HFIREFOX
     }
 
+    private enum ENVIRONMENT {
+        DEV, TESTING, STAGING, PRODUCTION
+    }
     public WebDriver getBrowserDriver(String browserName, String url) {
         BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
         switch (browser) {
