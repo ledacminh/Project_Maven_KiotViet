@@ -1,7 +1,5 @@
 package actions.commons;
 
-import atu.testrecorder.ATUTestRecorder;
-import atu.testrecorder.exceptions.ATUTestRecorderException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import commons.GlobalConstants;
 import org.openqa.selenium.OutputType;
@@ -21,7 +19,6 @@ import java.time.Duration;
 
 public class BaseTest {
     private static WebDriver driver;
-    private ATUTestRecorder recorder;
 
     private enum BROWSER {
         CHROME, EDGE, FIREFOX, HCHROME, HEDGE, HFIREFOX
@@ -121,22 +118,22 @@ public class BaseTest {
         }
     }
 
-    public void startRecording() {
-        try {
-            recorder = new ATUTestRecorder(GlobalConstants.TAKE_VIDEO_PATH, this.getClass().getName() + "_" + GlobalConstants.CURRENT_DATE_TIME, false);
-            recorder.start();
-        } catch (ATUTestRecorderException e) {
-            throw new RuntimeException("[BaseTest][startRecording] " + e.getMessage());
-        }
-    }
+//    public void startRecording() {
+//        try {
+//            recorder = new ATUTestRecorder(GlobalConstants.TAKE_VIDEO_PATH, this.getClass().getName() + "_" + GlobalConstants.CURRENT_DATE_TIME, false);
+//            recorder.start();
+//        } catch (ATUTestRecorderException e) {
+//            throw new RuntimeException("[BaseTest][startRecording] " + e.getMessage());
+//        }
+//    }
 
-    public void stopRecording() {
-        try {
-            recorder.stop();
-        } catch (ATUTestRecorderException e) {
-            throw new RuntimeException("[BaseTest][stopRecording] " + e.getMessage());
-        }
-    }
+//    public void stopRecording() {
+//        try {
+//            recorder.stop();
+//        } catch (ATUTestRecorderException e) {
+//            throw new RuntimeException("[BaseTest][stopRecording] " + e.getMessage());
+//        }
+//    }
 
     public void CloseBrowser() {
         driver.quit();

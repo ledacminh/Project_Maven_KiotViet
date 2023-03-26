@@ -25,6 +25,7 @@ public class LoginTestCase extends BaseTest {
         environment = ConfigFactory.create(Environment.class);
         WebDriver driver = getBrowserDriver(browserName, environment.url());
         login = PageGenerateManager.getLoginPage(driver);
+        Log.info("Running on " + environmentName + "...");
     }
 
     @Step("Login thành công")
