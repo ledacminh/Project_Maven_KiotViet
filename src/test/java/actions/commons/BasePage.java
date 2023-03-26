@@ -39,9 +39,17 @@ public class BasePage {
     public void clickToElement(WebDriver driver, String locator) {
         waitForElementIsVisible(driver, locator);
         waitForElementClickable(driver, locator);
+        highLightElement(driver, locator);
         hoverToElement(driver, locator);
         getElement(driver, locator).click();
+    }
 
+    public void clickToElement(WebDriver driver, String locator, String... params) {
+        waitForElementIsVisible(driver, locator, params);
+        waitForElementClickable(driver, locator, params);
+        highLightElement(driver, locator, params);
+        hoverToElement(driver, locator, params);
+        getDynamicElement(driver, locator, params).click();
     }
 
     public void waitForElementIsVisible(WebDriver driver, String locator) {
@@ -68,14 +76,16 @@ public class BasePage {
 
     public void enterTextToElement(WebDriver driver, String locator, String value) {
         waitForElementIsVisible(driver, locator);
+        highLightElement(driver, locator);
         getElement(driver, locator).clear();
         getElement(driver, locator).sendKeys(value);
     }
 
     public void enterTextToElement(WebDriver driver, String locator, String value, String... params) {
-        WebElement element = getDynamicElement(driver, locator, params);
-        element.clear();
-        element.sendKeys(value);
+        waitForElementIsVisible(driver, locator, params);
+        highLightElement(driver, locator, params);
+        getDynamicElement(driver, locator, params).clear();
+        getDynamicElement(driver, locator, params).sendKeys(value);
     }
 
     public void enterTextToElementUsingActions(WebDriver driver, String locator, String value) {
@@ -112,6 +122,24 @@ public class BasePage {
         actions.clickAndHold(getDynamicElement(driver, locator, params)).perform();
     }
 
+    public void highLightElement(WebDriver driver, String locator) {
+        WebElement element = getElement(driver, locator);
+        String originalStyle = element.getAttribute("style");
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, "border: 3px solid red; border-style: dashed;");
+        SleepInSecond(1);
+        jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, originalStyle);
+    }
+
+    public void highLightElement(WebDriver driver, String locator, String... params) {
+        WebElement element = getDynamicElement(driver, locator, params);
+        String originalStyle = element.getAttribute("style");
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, "border: 3px solid red; border-style: dashed;");
+        SleepInSecond(1);
+        jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, originalStyle);
+    }
+
     public void SleepInSecond(int second) {
         try {
             Thread.sleep(second * 1000L);
@@ -122,6 +150,7 @@ public class BasePage {
 
     public void clickToElementByJS(WebDriver driver, String locator) {
         waitForElementClickable(driver, locator);
+        highLightElement(driver, locator);
         javascriptExecutor = (JavascriptExecutor) driver;
         javascriptExecutor.executeScript("arguments[0].click;", getElement(driver, locator));
     }
