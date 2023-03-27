@@ -49,6 +49,6 @@ public class PropertyFile {
 
     public static void main(String[] args) {
         String currentDate = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(Calendar.getInstance().getTime());
-        System.out.println("CurentDate = " + currentDate);
+        System.out.println("CurrentDate = " + currentDate);
     }
 }

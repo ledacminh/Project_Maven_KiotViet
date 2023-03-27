@@ -18,7 +18,7 @@ import java.io.File;
 import java.time.Duration;
 
 public class BaseTest {
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     private enum BROWSER {
         CHROME, EDGE, FIREFOX, HCHROME, HEDGE, HFIREFOX
@@ -34,56 +34,56 @@ public class BaseTest {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--remote-allow-origins=*");
-                driver = new ChromeDriver(chromeOptions);
+                driver.set(new ChromeDriver(chromeOptions));
                 break;
             case EDGE:
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
-                driver = new EdgeDriver(edgeOptions);
+                driver.set(new EdgeDriver(edgeOptions));
                 break;
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                driver.set(new FirefoxDriver());
                 break;
             case HEDGE:
                 edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--headless");
                 edgeOptions.setHeadless(true);
                 WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver(edgeOptions);
+                driver.set(new EdgeDriver(edgeOptions));
                 break;
             case HCHROME:
                 chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless");
                 chromeOptions.setHeadless(true);
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(chromeOptions);
+                driver.set(new ChromeDriver(chromeOptions));
                 break;
             case HFIREFOX:
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.addArguments("--headless");
                 firefoxOptions.setHeadless(true);
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver(firefoxOptions);
+                driver.set(new FirefoxDriver(firefoxOptions));
                 break;
             default:
                 throw new RuntimeException("Please enter correct browser name");
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
-        driver.manage().window().maximize();
-        driver.get(url);
-        return driver;
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get().manage().window().maximize();
+        driver.get().get(url);
+        return driver.get();
     }
 
     public static WebDriver getDriver() {
-        return driver;
+        return driver.get();
     }
 
     public void takeScreenshots(ITestResult iTestResult) {
         if (ITestResult.SUCCESS == iTestResult.getStatus()) {
             try {
-                TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+                TakesScreenshot takesScreenshot = (TakesScreenshot) driver.get();
                 File file = takesScreenshot.getScreenshotAs(OutputType.FILE);
                 File directory = new File(GlobalConstants.TAKE_SCREENSHOTS_PATH);
                 if (!directory.exists()) {
@@ -136,7 +136,8 @@ public class BaseTest {
 //    }
 
     public void CloseBrowser() {
-        driver.quit();
+        driver.get().quit();
+      //  driver.remove();
     }
 
 }
