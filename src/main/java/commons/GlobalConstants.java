@@ -9,6 +9,8 @@ public class GlobalConstants {
     public static final String PROJECT_PATH = System.getProperty("user.dir");
     public static final long SHORT_TIMEOUT = 15;
     public static final long LONG_TIMEOUT = 20;
+    public static final long RETRY_COUNT = 2;
+
     public static final String SLASH = File.separator;
     public static final String CONFIG_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "datas" + SLASH + "data.xlsx";
     public static final String FILE_DATA_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "datas" + SLASH + "config.properties";

@@ -36,6 +36,10 @@ public class LoginActions extends BasePage {
         clickToElement(driver, LoginInterface.BUTTON_QUAN_LY);
         SleepInSecond(5);
     }
+    public void clickButtonLogin(String text) {
+        clickToElement(driver,"");
+        SleepInSecond(5);
+    }
 
     public void loginSuccessfully() {
         nhapTenGianHang(ListDataLoginProperties.getString("ten_gian_hang"));

@@ -51,12 +51,12 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Suite_Login" class="navigator-link ">
-                    <span>C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\resources\Runstaging.xml</span>
+                    <span>C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\resources\Rundev.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
                   <a href="#" panel-name="testlist-Suite_Login" class="navigator-link ">
-                    <span class="test-stats">2 tests</span>
+                    <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                     <div class="method-list-content passed suite-Suite_Login">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_Login" title="testcases.LoginTestCase02" class="method navigator-link" hash-for-method="Test_Login_01">Test_Login_01</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite_Login" title="testcases.LoginTestCase" class="method navigator-link" hash-for-method="Test_Login_01">Test_Login_01</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite_Login -->
@@ -122,7 +122,7 @@
           <div class="suite-Suite_Login-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">testcases.LoginTestCase02</span>
+              <span class="class-name">testcases.LoginTestCase</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -130,6 +130,8 @@
                   <a name="Test_Login_01">
                   </a> <!-- Test_Login_01 -->
                   <span class="method-name">Test_Login_01</span>
+                  <em>
+(Đăng nhập thành công!)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -137,30 +139,23 @@
         </div> <!-- panel Suite_Login -->
         <div panel-name="test-xml-Suite_Login" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\resources\Runstaging.xml</span>
+            <span class="header-content">C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\resources\Rundev.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Suite Login&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+&lt;suite thread-count=&quot;2&quot; name=&quot;Suite Login&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;actions.commons.TestListener&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Run on Chrome&quot; verbose=&quot;0&quot;&gt;
-    &lt;parameter name=&quot;environmentName&quot; value=&quot;staging&quot;/&gt;
+  &lt;test thread-count=&quot;2&quot; name=&quot;Run on Chrome&quot; verbose=&quot;0&quot;&gt;
+    &lt;parameter name=&quot;environmentName&quot; value=&quot;dev&quot;/&gt;
     &lt;parameter name=&quot;browserName&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;testcases.LoginTestCase&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Run on Chrome --&gt;
-  &lt;test thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Run on edge&quot; verbose=&quot;0&quot;&gt;
-    &lt;parameter name=&quot;environmentName&quot; value=&quot;staging&quot;/&gt;
-    &lt;parameter name=&quot;browserName&quot; value=&quot;edge&quot;/&gt;
-    &lt;classes&gt;
-      &lt;class name=&quot;testcases.LoginTestCase02&quot;/&gt;
-    &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Run on edge --&gt;
 &lt;/suite&gt; &lt;!-- Suite Login --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -173,9 +168,6 @@
             <ul>
               <li>
                 <span class="test-name">Run on Chrome (1 class)</span>
-              </li>
-              <li>
-                <span class="test-name">Run on edge (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -204,13 +196,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'Test_Login_01')
-data.setCell(0, 2, 'testcases.LoginTestCase02')
-data.setCell(0, 3, 8791);
+data.setCell(0, 2, 'testcases.LoginTestCase')
+data.setCell(0, 3, 13178);
 window.suiteTableData['Suite_Login']= { tableData: data, tableDiv: 'times-div-Suite_Login'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 32 seconds</span>
+              <span class="suite-total-time">Total running time: 13 seconds</span>
               <div id="times-div-Suite_Login">
               </div> <!-- times-div-Suite_Login -->
             </div> <!-- times-div -->
@@ -238,23 +230,16 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">testcases.LoginTestCase</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">initBrowser(chrome, staging)</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- configuration-method before -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">testcases.LoginTestCase02</div> <!-- chronological-class-name -->
-              <div class="configuration-method before">
-                <span class="method-name">initBrowser(edge, staging)</span>
+                <span class="method-name">initBrowser(chrome, dev)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">Test_Login_01</span>
-                <span class="method-start">4520 ms</span>
+                <span class="method-start">11642 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">AfterTest([TestResult name=Test_Login_01 status=SUCCESS method=LoginTestCase02.Test_Login_01()[pri:0, instance...)</span>
-                <span class="method-start">13320 ms</span>
+                <span class="method-name">AfterTest([TestResult name=Test_Login_01 status=SUCCESS method=LoginTestCase.Test_Login_01()[pri:0, instance:t...)</span>
+                <span class="method-start">24843 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

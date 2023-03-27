@@ -22,6 +22,7 @@ interfaces\HangHoaInterface$DanhMuc.class
 interfaces\HangHoaInterface$ThietLapGia.class
 actions\commons\ReportListener.class
 interfaces\TongQuanInterface.class
+actions\commons\RetryTestCase.class
 actions\commons\TestListener.class
 actions\commons\BaseTest$1.class
 interfaces\HangHoaInterface$KiemKho.class
