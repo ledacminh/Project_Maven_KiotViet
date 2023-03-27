@@ -5,6 +5,7 @@ interfaces\HangHoaInterface$DanhMuc$ManHinhThemHangHoa.class
 environment\Environment.class
 reports\extentreport\ExtentManager.class
 actions\commons\CustomAssert.class
+retryConfig\RetryListener.class
 interfaces\HangHoaInterface.class
 interfaces\LoginInterface.class
 interfaces\HangHoaInterface$DanhMuc$ManHinhThemHangCheBien.class
@@ -12,6 +13,7 @@ actions\commons\BaseTest.class
 datas\HangHoaData.class
 testcases\LoginTestCase.class
 actions\commons\BaseTest$BROWSER.class
+retryConfig\RetryTestCase.class
 actions\TongQuanActions.class
 actions\LoginActions.class
 interfaces\HangHoaInterface$DanhMuc$ManHinhList.class
@@ -22,7 +24,6 @@ interfaces\HangHoaInterface$DanhMuc.class
 interfaces\HangHoaInterface$ThietLapGia.class
 actions\commons\ReportListener.class
 interfaces\TongQuanInterface.class
-actions\commons\RetryTestCase.class
 actions\commons\TestListener.class
 actions\commons\BaseTest$1.class
 interfaces\HangHoaInterface$KiemKho.class
