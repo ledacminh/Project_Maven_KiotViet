@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite_Login" class="navigator-link">
-              <span class="suite-name border-failed">Suite Login</span>
+              <span class="suite-name border-passed">Suite Login</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,35 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods, 1 failed,  1 skipped,  1 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Suite_Login" class="hide-methods failed suite-Suite_Login"> (hide)</a> <!-- hide-methods failed suite-Suite_Login -->
-                      <a href="#" panel-name="suite-Suite_Login" class="show-methods failed suite-Suite_Login"> (show)</a> <!-- show-methods failed suite-Suite_Login -->
-                    </span>
-                    <div class="method-list-content failed suite-Suite_Login">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_Login" title="testcases.LoginTestCase" class="method navigator-link" hash-for-method="Test_Login_02">Test_Login_02</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Suite_Login -->
-                  </li>
-                  <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Suite_Login" class="hide-methods skipped suite-Suite_Login"> (hide)</a> <!-- hide-methods skipped suite-Suite_Login -->
-                      <a href="#" panel-name="suite-Suite_Login" class="show-methods skipped suite-Suite_Login"> (show)</a> <!-- show-methods skipped suite-Suite_Login -->
-                    </span>
-                    <div class="method-list-content skipped suite-Suite_Login">
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_Login" title="testcases.LoginTestCase" class="method navigator-link" hash-for-method="Test_Login_03">Test_Login_03</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content skipped suite-Suite_Login -->
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -147,55 +119,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite_Login" class="panel Suite_Login">
-          <div class="suite-Suite_Login-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">testcases.LoginTestCase</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="Test_Login_02">
-                  </a> <!-- Test_Login_02 -->
-                  <span class="method-name">Test_Login_02</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath:  (tried for 15 second(s) with 500 milliseconds interval)
-Build info: version: &apos;4.2.0&apos;, revision: &apos;86eb611648&apos;
-System info: host: &apos;PF-37ZPPE&apos;, ip: &apos;10.127.197.243&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;19.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.111, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\v-lminh\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:63745}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:63745/devtoo..., se:cdpVersion: 111.0.5563.111, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 1ede34239bb8a214679761fb5d589f92
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at actions.commons.BasePage.waitForElementIsVisible(BasePage.java:57)
-	at actions.commons.BasePage.clickToElement(BasePage.java:40)
-	at actions.LoginActions.clickButtonLogin(LoginActions.java:40)
-	at testcases.LoginTestCase.Test_Login_02(LoginTestCase.java:62)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite_Login-class-failed -->
-          <div class="suite-Suite_Login-class-skipped">
-            <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
-              <span class="class-name">testcases.LoginTestCase</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="Test_Login_03">
-                  </a> <!-- Test_Login_03 -->
-                  <span class="method-name">Test_Login_03</span>
-                  <div class="stack-trace">java.lang.Throwable: Method LoginTestCase.Test_Login_03()[pri:0, instance:testcases.LoginTestCase@e15b7e8] depends on not successfully finished methods
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 22 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite_Login-class-skipped -->
           <div class="suite-Suite_Login-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -268,24 +191,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Test_Login_02')
+data.setCell(0, 1, 'Test_Login_01')
 data.setCell(0, 2, 'testcases.LoginTestCase')
-data.setCell(0, 3, 21993);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'Test_Login_01')
-data.setCell(1, 2, 'testcases.LoginTestCase')
-data.setCell(1, 3, 12748);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'Test_Login_03')
-data.setCell(2, 2, 'testcases.LoginTestCase')
-data.setCell(2, 3, 0);
+data.setCell(0, 3, 11946);
 window.suiteTableData['Suite_Login']= { tableData: data, tableDiv: 'times-div-Suite_Login'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 34 seconds</span>
+              <span class="suite-total-time">Total running time: 11 seconds</span>
               <div id="times-div-Suite_Login">
               </div> <!-- times-div-Suite_Login -->
             </div> <!-- times-div -->
@@ -317,30 +232,12 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">Test_Login_02</span>
-                <span class="method-start">5168 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">AfterTest([TestResult name=Test_Login_02 status=FAILURE method=LoginTestCase.Test_Login_02()[pri:0, instance:t...)</span>
-                <span class="method-start">27176 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">Test_Login_03</span>
-                <span class="method-start">27377 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method before">
-                <span class="method-name">initBrowser(chrome, dev)</span>
-                <span class="method-start">27382 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
                 <span class="method-name">Test_Login_01</span>
-                <span class="method-start">31403 ms</span>
+                <span class="method-start">3943 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">AfterTest([TestResult name=Test_Login_01 status=SUCCESS method=LoginTestCase.Test_Login_01()[pri:0, instance:t...)</span>
-                <span class="method-start">44156 ms</span>
+                <span class="method-start">15914 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -19,17 +19,17 @@ public class LoginActions extends BasePage {
 
     public void nhapTenGianHang(String tenGianHang) {
         enterTextToElement(driver, LoginInterface.TEN_GIAN_HANG, tenGianHang);
-        SleepInSecond(1);
+        SleepInSecond(0.5);
     }
 
     public void nhapTenDangNhap(String tenDangNhap) {
         enterTextToElement(driver, LoginInterface.TEN_DANG_NHAP, tenDangNhap);
-        SleepInSecond(1);
+        SleepInSecond(0.5);
     }
 
     public void nhapMatKhau(String matKhau) {
         enterTextToElement(driver, LoginInterface.MAT_KHAU, matKhau);
-        SleepInSecond(1);
+        SleepInSecond(0.5);
     }
 
     public void clickButtonLogin() {

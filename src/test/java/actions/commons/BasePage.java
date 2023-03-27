@@ -140,9 +140,9 @@ public class BasePage {
         jsExecutor.executeScript("arguments[0].setAttribute('style', arguments[1])", element, originalStyle);
     }
 
-    public void SleepInSecond(int second) {
+    public void SleepInSecond(double second) {
         try {
-            Thread.sleep(second * 1000L);
+            Thread.sleep((long) (second * 1000L));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
