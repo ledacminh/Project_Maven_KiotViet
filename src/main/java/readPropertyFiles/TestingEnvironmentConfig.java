@@ -1,17 +1,20 @@
-package ultilities;
+package readPropertyFiles;
 
 import commons.GlobalConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
-public class ListDataLoginProperties {
+public class TestingEnvironmentConfig {
     private static final Map<String, String> mapDataProperties = new HashMap<String, String>();
     static {
         try {
             Properties properties = new Properties();
-            properties.load(new FileInputStream(GlobalConstants.LOGIN_PROPERTY_PATH));
+            properties.load(new FileInputStream(GlobalConstants.TESTING_PROPERTY_PATH));
             Enumeration<?> enumeration = properties.propertyNames();
             while (enumeration.hasMoreElements()) {
                 String key = (String) enumeration.nextElement();
@@ -19,7 +22,7 @@ public class ListDataLoginProperties {
                 mapDataProperties.put(key, value);
             }
         } catch (IOException e) {
-            throw new RuntimeException("[ListDataLoginProperties] " + e.getMessage());
+            throw new RuntimeException("[TestingEnvironmentConfig] " + e.getMessage());
         }
     }
 
@@ -28,7 +31,7 @@ public class ListDataLoginProperties {
         try {
             value = mapDataProperties.get(key);
         } catch (Exception e) {
-            throw new RuntimeException("[ListDataLoginProperties].[getString]" + e.getMessage());
+            throw new RuntimeException("[TestingEnvironmentConfig].[getString]" + e.getMessage());
         }
         return value;
     }

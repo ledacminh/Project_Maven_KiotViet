@@ -1,8 +1,8 @@
-package environment;
+package environmentConfig;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"file:src/test/java/environment/${environment}.properties"})
+@Config.Sources({"file:src/test/java/environmentConfig/${environment}.properties"})
 public interface Environment extends Config {
 
     @DefaultValue("window")

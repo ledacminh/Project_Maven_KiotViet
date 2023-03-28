@@ -4,7 +4,7 @@ import actions.commons.BasePage;
 import actions.commons.PageGenerateManager;
 import interfaces.LoginInterface;
 import interfaces.TongQuanInterface;
-import ultilities.ListDataLoginProperties;
+import readPropertyFiles.ListDataLoginProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 

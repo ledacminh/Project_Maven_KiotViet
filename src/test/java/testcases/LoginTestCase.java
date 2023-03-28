@@ -5,11 +5,9 @@ import actions.commons.BaseTest;
 import actions.commons.PageGenerateManager;
 import actions.commons.ReportListener;
 import commons.Log;
-import environment.Environment;
+import environmentConfig.Environment;
 import org.aeonbits.owner.ConfigFactory;
-import retryConfig.RetryListener;
-import retryConfig.RetryTestCase;
-import ultilities.ListDataLoginProperties;
+import readPropertyFiles.ListDataLoginProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -18,14 +16,11 @@ import org.testng.annotations.*;
 public class LoginTestCase extends BaseTest {
     private LoginActions login;
 
-    @Parameters({"browserName", "environmentName"})
+    @Parameters({"browserName"})
     @BeforeMethod
-    public void initBrowser(String browserName, String environmentName) {
-        ConfigFactory.setProperty("environment", environmentName);
-        Environment environment = ConfigFactory.create(Environment.class);
-        WebDriver driver = getBrowserDriver(browserName, environment.url());
+    public void initBrowser(String browserName) {
+        WebDriver driver = getBrowserDriver(browserName);
         login = PageGenerateManager.getLoginPage(driver);
-        Log.info("Running on " + environmentName + "...");
     }
 
     @Test

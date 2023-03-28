@@ -8,6 +8,7 @@ public class PageGenerateManager {
 
     public static LoginActions getLoginPage(WebDriver driver) {
         return new LoginActions(driver);
+
     }
 
     public static TongQuanActions getTongQuanPage(WebDriver driver) {

@@ -3,12 +3,10 @@ package testcases;
 import actions.LoginActions;
 import actions.commons.BaseTest;
 import actions.commons.PageGenerateManager;
-import commons.DeleteFiles;
-import commons.GlobalConstants;
 import commons.Log;
-import environment.Environment;
+import environmentConfig.Environment;
 import org.aeonbits.owner.ConfigFactory;
-import ultilities.ListDataLoginProperties;
+import readPropertyFiles.ListDataLoginProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -20,7 +18,7 @@ public class LoginTestCase02 extends BaseTest {
     @Parameters({"browserName", "environmentName"})
     @BeforeMethod
     public void initBrowser(String browserName, String environmentName) {
-        ConfigFactory.setProperty("environment", environmentName);
+        ConfigFactory.setProperty("environmentConfig", environmentName);
         environment = ConfigFactory.create(Environment.class);
         WebDriver driver = getBrowserDriver(browserName, environment.url());
         login = PageGenerateManager.getLoginPage(driver);

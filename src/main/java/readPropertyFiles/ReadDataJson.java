@@ -1,4 +1,4 @@
-package ultilities;
+package readPropertyFiles;
 
 import commons.GlobalConstants;
 import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;

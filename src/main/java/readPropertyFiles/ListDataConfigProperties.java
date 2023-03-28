@@ -1,4 +1,4 @@
-package ultilities;
+package readPropertyFiles;
 
 import commons.GlobalConstants;
 
@@ -9,12 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class ListDataHangHoaProperties {
+public class ListDataConfigProperties {
     private static final Map<String, String> mapDataProperties = new HashMap<String, String>();
     static {
         try {
             Properties properties = new Properties();
-            properties.load(new FileInputStream(GlobalConstants.HANG_HOA_PROPERTY_PATH));
+            properties.load(new FileInputStream(GlobalConstants.DOI_TAC_PROPERTY_PATH));
             Enumeration<?> enumeration = properties.propertyNames();
             while (enumeration.hasMoreElements()) {
                 String key = (String) enumeration.nextElement();
@@ -22,7 +22,7 @@ public class ListDataHangHoaProperties {
                 mapDataProperties.put(key, value);
             }
         } catch (IOException e) {
-            throw new RuntimeException("[ListDataHangHoaProperties] " + e.getMessage());
+            throw new RuntimeException("[ListDataConfigProperties] " + e.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ public class ListDataHangHoaProperties {
         try {
             value = mapDataProperties.get(key);
         } catch (Exception e) {
-            throw new RuntimeException("[ListDataHangHoaProperties].[getString]" + e.getMessage());
+            throw new RuntimeException("[ListDataConfigProperties].[getString]" + e.getMessage());
         }
         return value;
     }

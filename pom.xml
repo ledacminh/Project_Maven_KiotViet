@@ -23,7 +23,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <!--suppress resolvedMavenProperty, UnresolvedMavenProperty -->
-                        <suiteXmlFile>src/test/java/resources/Run${evn}.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/java/resources/Run${env}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -102,6 +102,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>browserstack-java-sdk</artifactId>
+            <version>LATEST</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
