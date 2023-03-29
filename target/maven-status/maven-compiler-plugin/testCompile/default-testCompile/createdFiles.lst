@@ -2,7 +2,6 @@ actions\commons\BaseTest$ENVIRONMENT.class
 testcases\LoginTestCase02.class
 datas\HangHoaData$KiemKho.class
 interfaces\HangHoaInterface$DanhMuc$ManHinhThemHangHoa.class
-environment\Environment.class
 reports\extentreport\ExtentManager.class
 actions\commons\CustomAssert.class
 retryConfig\RetryListener.class
@@ -29,3 +28,4 @@ actions\commons\BaseTest$1.class
 interfaces\HangHoaInterface$KiemKho.class
 datas\HangHoaData$ThietLapGia.class
 datas\HangHoaData$DanhMuc.class
+environmentConfig\Environment.class

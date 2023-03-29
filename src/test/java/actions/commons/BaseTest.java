@@ -83,7 +83,70 @@ public class BaseTest {
         driver.get().get(url);
         return driver.get();
     }
-
+    public WebDriver getBrowserDriver(String browserName, String env, boolean isRemote) {
+        BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
+        if (!isRemote) {
+            switch (browser) {
+                case CHROME:
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--remote-allow-origins=*");
+                    driver.set(new ChromeDriver(chromeOptions));
+                    break;
+                case EDGE:
+                    WebDriverManager.edgedriver().setup();
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    edgeOptions.addArguments("--remote-allow-origins=*");
+                    driver.set(new EdgeDriver(edgeOptions));
+                    break;
+                case FIREFOX:
+                    WebDriverManager.firefoxdriver().setup();
+                    driver.set(new FirefoxDriver());
+                    break;
+                case HEDGE:
+                    edgeOptions = new EdgeOptions();
+                    edgeOptions.addArguments("--headless");
+                    edgeOptions.setHeadless(true);
+                    WebDriverManager.edgedriver().setup();
+                    driver.set(new EdgeDriver(edgeOptions));
+                    break;
+                case HCHROME:
+                    chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--headless");
+                    chromeOptions.setHeadless(true);
+                    WebDriverManager.chromedriver().setup();
+                    driver.set(new ChromeDriver(chromeOptions));
+                    break;
+                case HFIREFOX:
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--headless");
+                    firefoxOptions.setHeadless(true);
+                    WebDriverManager.firefoxdriver().setup();
+                    driver.set(new FirefoxDriver(firefoxOptions));
+                    break;
+                default:
+                    throw new RuntimeException("Please enter correct browser name");
+            }
+        } else {
+            DesiredCapabilities caps = getCapability(true, env);
+            try {
+                WebDriver driverTempt = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), caps);
+                driver.set(driverTempt);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("[BaseTest].[getBrowserDriver] " + e.getMessage());
+            }
+        }
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get().manage().window().maximize();
+        if (env.equalsIgnoreCase(ENVIRONMENT.DEV.toString())) {
+            driver.get().get(DevEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.STAGING.toString())) {
+            driver.get().get(StagingEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.TESTING.toString())) {
+            driver.get().get(TestingEnvironmentConfig.getString("url"));
+        }
+        return driver.get();
+    }
     public WebDriver getBrowserDriver(String browserName) {
         BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
         //Get environment from commandline
@@ -138,7 +201,7 @@ public class BaseTest {
                 WebDriver driverTempt = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), caps);
                 driver.set(driverTempt);
             } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("[BaseTest].[getBrowserDriver] " + e.getMessage());
             }
         }
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
@@ -249,7 +312,7 @@ public class BaseTest {
 
     public void CloseBrowser() {
         driver.get().quit();
-        //  driver.remove();
+        driver.remove();
     }
 
 }

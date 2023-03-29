@@ -3,21 +3,23 @@ package testcases;
 import actions.LoginActions;
 import actions.commons.BaseTest;
 import actions.commons.PageGenerateManager;
-import actions.commons.ReportListener;
-import commons.Log;
-import readPropertyFiles.ListDataLoginProperties;
+import environmentConfig.Environment;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+import readPropertyFiles.ListDataLoginProperties;
 
-@Listeners({ReportListener.class})
-public class LoginTestCase extends BaseTest {
+public class LoginTestCase03 extends BaseTest {
     private LoginActions login;
+    Environment environment;
 
-    @Parameters({"browserName"})
+    @Parameters({"browserName", "env", "isRemote"})
     @BeforeMethod
-    public void initBrowser(String browserName) {
-        WebDriver driver = getBrowserDriver(browserName);
+    public void initBrowser(String browserName, String env, boolean isRemote) {
+        WebDriver driver = getBrowserDriver(browserName, env, isRemote);
         login = PageGenerateManager.getLoginPage(driver);
     }
 
@@ -25,21 +27,24 @@ public class LoginTestCase extends BaseTest {
     public void Test_Login_01() {
         //Step 1: Nhập tên gian hàng
         login.nhapTenGianHang(ListDataLoginProperties.getString("ten_gian_hang"));
-        Log.info("[Test_Login_01] Step 1: Nhập tên gian hàng");
 
         //Step 2: Nhập tên đăng nhập
         login.nhapTenDangNhap(ListDataLoginProperties.getString("ten_dang_nhap"));
-        Log.info("[Test_Login_01] Step 2: Nhập tên đăng nhập");
+
         //Step 3: Nhập mật khẩu
         login.nhapMatKhau(ListDataLoginProperties.getString("mat_khau"));
-        Log.info("[Test_Login_01] Step 3: Nhập mật khẩu");
+
         //Step 4: Click button Login
         login.clickButtonLogin();
-        Log.info("[Test_Login_01] Step 4: Click button login");
+
+
     }
+
 
     @AfterMethod(alwaysRun = true)
     public void AfterTest(ITestResult iTestResult) {
+        takeScreenshots(iTestResult);
         CloseBrowser();
     }
+
 }
