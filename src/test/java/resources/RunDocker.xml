@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite thread-count="2" name="Suite Login" parallel="tests">
+    <listeners>
+       <listener class-name="actions.commons.TestListener"/>
+    </listeners>
+    <test name="Run on Chrome">
+        <parameter name="browserName" value="chrome"/>
+        <parameter name="env" value="dev"/>
+        <parameter name="port" value="4444"/>
+        <classes>
+            <class name="testcases.LoginTestCase04_Docker"/>
+        </classes>
+    </test>
+</suite>
+

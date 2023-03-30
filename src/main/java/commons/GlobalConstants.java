@@ -20,6 +20,7 @@ public class GlobalConstants {
     public static final String DEV_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "environmentConfig" + SLASH + "dev.properties";
     public static final String TESTING_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "environmentConfig" + SLASH + "testing.properties";
     public static final String STAGING_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "environmentConfig" + SLASH + "staging.properties";
+    public static final String PRODUCTION_PROPERTY_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "environmentConfig" + SLASH + "production.properties";
     public static final String TAKE_SCREENSHOTS_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "screenshots" + SLASH;
     public static final String TAKE_VIDEO_PATH = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "videos" + SLASH;
     public static final String DATA_JSON = PROJECT_PATH + SLASH + "src" + SLASH + "test" + SLASH + "java" + SLASH + "datas" + SLASH + "data.json";

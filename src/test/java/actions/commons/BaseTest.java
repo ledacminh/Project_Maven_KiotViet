@@ -16,6 +16,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import readPropertyFiles.DevEnvironmentConfig;
+import readPropertyFiles.ProductionEnvironmentConfig;
 import readPropertyFiles.StagingEnvironmentConfig;
 import readPropertyFiles.TestingEnvironmentConfig;
 
@@ -83,6 +84,45 @@ public class BaseTest {
         driver.get().get(url);
         return driver.get();
     }
+
+    public WebDriver getBrowserDriver(String browserName, String env, String port) {
+        BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
+        WebDriver driverTempt = null;
+        try {
+            switch (browser) {
+                case CHROME:
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    driverTempt = new RemoteWebDriver(new URL(String.format("http://localhost:%s/wd/hub", port)), chromeOptions);
+                    break;
+                case EDGE:
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    driverTempt = new RemoteWebDriver(new URL(String.format("http://localhost:%s/wd/hub", port)), edgeOptions);
+                    break;
+                case FIREFOX:
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    driverTempt = new RemoteWebDriver(new URL(String.format("http://localhost:%s/wd/hub", port)), firefoxOptions);
+                    break;
+                default:
+                    throw new RuntimeException("Please enter correct browser name");
+            }
+            driver.set(driverTempt);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("[BaseTest].[getBrowserDriver] " + e.getMessage());
+        }
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get().manage().window().maximize();
+        if (env.equalsIgnoreCase(ENVIRONMENT.DEV.toString())) {
+            driver.get().get(DevEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.STAGING.toString())) {
+            driver.get().get(StagingEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.TESTING.toString())) {
+            driver.get().get(TestingEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.PRODUCTION.toString())) {
+            driver.get().get(ProductionEnvironmentConfig.getString("url"));
+        }
+        return driver.get();
+    }
+
     public WebDriver getBrowserDriver(String browserName, String env, boolean isRemote) {
         BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
         if (!isRemote) {
@@ -144,9 +184,12 @@ public class BaseTest {
             driver.get().get(StagingEnvironmentConfig.getString("url"));
         } else if (env.equalsIgnoreCase(ENVIRONMENT.TESTING.toString())) {
             driver.get().get(TestingEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.PRODUCTION.toString())) {
+            driver.get().get(ProductionEnvironmentConfig.getString("url"));
         }
         return driver.get();
     }
+
     public WebDriver getBrowserDriver(String browserName) {
         BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
         //Get environment from commandline
@@ -212,6 +255,8 @@ public class BaseTest {
             driver.get().get(StagingEnvironmentConfig.getString("url"));
         } else if (env.equalsIgnoreCase(ENVIRONMENT.TESTING.toString())) {
             driver.get().get(TestingEnvironmentConfig.getString("url"));
+        } else if (env.equalsIgnoreCase(ENVIRONMENT.PRODUCTION.toString())) {
+            driver.get().get(ProductionEnvironmentConfig.getString("url"));
         }
         return driver.get();
     }
@@ -244,6 +289,15 @@ public class BaseTest {
                 desiredCapabilities.setCapability("browser_version", StagingEnvironmentConfig.getString("browser_version"));
                 desiredCapabilities.setCapability("browserstack.local", StagingEnvironmentConfig.getString("browserstack_local"));
                 desiredCapabilities.setCapability("browserstack.selenium_version", StagingEnvironmentConfig.getString("browserstack_selenium_version"));
+                desiredCapabilities.setCapability("browserstack.user", GlobalConstants.BROWSER_STACK_USERNAME);
+                desiredCapabilities.setCapability("browserstack.key", GlobalConstants.BROWSER_STACK_KEY);
+            } else if (environment.equalsIgnoreCase(ENVIRONMENT.PRODUCTION.toString())) {
+                desiredCapabilities.setCapability("os", ProductionEnvironmentConfig.getString("os"));
+                desiredCapabilities.setCapability("os_version", ProductionEnvironmentConfig.getString("os_version"));
+                desiredCapabilities.setCapability("browser", ProductionEnvironmentConfig.getString("browser"));
+                desiredCapabilities.setCapability("browser_version", ProductionEnvironmentConfig.getString("browser_version"));
+                desiredCapabilities.setCapability("browserstack.local", ProductionEnvironmentConfig.getString("browserstack_local"));
+                desiredCapabilities.setCapability("browserstack.selenium_version", ProductionEnvironmentConfig.getString("browserstack_selenium_version"));
                 desiredCapabilities.setCapability("browserstack.user", GlobalConstants.BROWSER_STACK_USERNAME);
                 desiredCapabilities.setCapability("browserstack.key", GlobalConstants.BROWSER_STACK_KEY);
             }
