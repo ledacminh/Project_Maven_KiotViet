@@ -5,10 +5,8 @@
     </listeners>
     <test name="Run on Chrome">
         <parameter name="browserName" value="chrome"/>
-        <parameter name="env" value="dev"/>
-        <parameter name="isRemote" value="false"/>
         <classes>
-            <class name="testcases.LoginTestCase03"/>
+            <class name="testcases.LoginTestCase"/>
         </classes>
     </test>
 
