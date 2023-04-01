@@ -66,7 +66,7 @@ public class LoginTestCase extends BaseTest {
         login.nhapMatKhau(ListDataLoginProperties.getString("mat_khau"));
         Log.info("[Test_Login_03] Step 3: Nhập mật khẩu");
         //Step 4: Click button Login
-        login.clickButtonLogin();
+        login.clickButtonLogin("");
         Log.info("[Test_Login_03] Step 4: Click button login");
     }
     @AfterMethod(alwaysRun = true)
