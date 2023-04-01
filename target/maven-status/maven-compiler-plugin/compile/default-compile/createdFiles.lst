@@ -14,3 +14,4 @@ readPropertyFiles\ReadDataJson$ListUsers.class
 readPropertyFiles\ReadDataJson.class
 readPropertyFiles\TestingEnvironmentConfig.class
 commons\DeleteFiles.class
+readPropertyFiles\ProductionEnvironmentConfig.class

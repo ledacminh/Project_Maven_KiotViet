@@ -23,9 +23,11 @@ interfaces\HangHoaInterface$DanhMuc.class
 interfaces\HangHoaInterface$ThietLapGia.class
 actions\commons\ReportListener.class
 interfaces\TongQuanInterface.class
+testcases\LoginTestCase04_Docker.class
 actions\commons\TestListener.class
 actions\commons\BaseTest$1.class
 interfaces\HangHoaInterface$KiemKho.class
 datas\HangHoaData$ThietLapGia.class
 datas\HangHoaData$DanhMuc.class
 environmentConfig\Environment.class
+testcases\LoginTestCase03.class

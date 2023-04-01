@@ -11,9 +11,11 @@ C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\datas\Han
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\actions\commons\BaseTest.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\actions\TongQuanActions.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\interfaces\LoginInterface.java
+C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\testcases\LoginTestCase03.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\actions\commons\CustomAssert.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\testcases\LoginTestCase.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\retryConfig\RetryListener.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\reports\extentreport\ExtentTestManager.java
+C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\testcases\LoginTestCase04_Docker.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\interfaces\TongQuanInterface.java
 C:\Users\v-lminh\Desktop\Automation\ChatGPT\ProjectMaven\src\test\java\reports\extentreport\ExtentManager.java

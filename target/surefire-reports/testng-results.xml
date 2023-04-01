@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-28T22:34:03 ICT" name="Suite Login" finished-at="2023-03-28T22:34:20 ICT" duration-ms="16621">
+  <suite started-at="2023-04-01T15:20:15 ICT" name="Suite Login" finished-at="2023-04-01T15:20:32 ICT" duration-ms="17603">
     <groups>
     </groups>
-    <test started-at="2023-03-28T22:34:03 ICT" name="Run on Chrome" finished-at="2023-03-28T22:34:20 ICT" duration-ms="16481">
+    <test started-at="2023-04-01T15:20:15 ICT" name="Run on Chrome" finished-at="2023-04-01T15:20:32 ICT" duration-ms="17603">
       <class name="testcases.LoginTestCase">
-        <test-method is-config="true" signature="initBrowser(java.lang.String)[pri:0, instance:testcases.LoginTestCase@34c01041]" started-at="2023-03-28T22:34:04 ICT" name="initBrowser" finished-at="2023-03-28T22:34:08 ICT" duration-ms="4319" status="PASS">
+        <test-method is-config="true" signature="initBrowser(java.lang.String)[pri:0, instance:testcases.LoginTestCase@34c01041]" started-at="2023-04-01T15:20:15 ICT" name="initBrowser" finished-at="2023-04-01T15:20:20 ICT" duration-ms="4782" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initBrowser -->
-        <test-method signature="Test_Login_01()[pri:0, instance:testcases.LoginTestCase@34c01041]" started-at="2023-03-28T22:34:08 ICT" name="Test_Login_01" finished-at="2023-03-28T22:34:19 ICT" duration-ms="11359" status="PASS">
+        <test-method signature="Test_Login_01()[pri:0, instance:testcases.LoginTestCase@34c01041]" started-at="2023-04-01T15:20:20 ICT" name="Test_Login_01" finished-at="2023-04-01T15:20:32 ICT" duration-ms="11701" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test_Login_01 -->
-        <test-method is-config="true" signature="AfterTest(org.testng.ITestResult)[pri:0, instance:testcases.LoginTestCase@34c01041]" started-at="2023-03-28T22:34:19 ICT" name="AfterTest" finished-at="2023-03-28T22:34:20 ICT" duration-ms="321" status="PASS">
+        <test-method is-config="true" signature="AfterTest(org.testng.ITestResult)[pri:0, instance:testcases.LoginTestCase@34c01041]" started-at="2023-04-01T15:20:32 ICT" name="AfterTest" finished-at="2023-04-01T15:20:32 ICT" duration-ms="309" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -35,35 +35,5 @@
         </test-method> <!-- AfterTest -->
       </class> <!-- testcases.LoginTestCase -->
     </test> <!-- Run on Chrome -->
-    <test started-at="2023-03-28T22:34:03 ICT" name="Run on EDGE" finished-at="2023-03-28T22:34:20 ICT" duration-ms="16621">
-      <class name="testcases.LoginTestCase">
-        <test-method is-config="true" signature="initBrowser(java.lang.String)[pri:0, instance:testcases.LoginTestCase@bcef303]" started-at="2023-03-28T22:34:04 ICT" name="initBrowser" finished-at="2023-03-28T22:34:07 ICT" duration-ms="3600" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[EDGE]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- initBrowser -->
-        <test-method signature="Test_Login_01()[pri:0, instance:testcases.LoginTestCase@bcef303]" started-at="2023-03-28T22:34:07 ICT" name="Test_Login_01" finished-at="2023-03-28T22:34:19 ICT" duration-ms="11914" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Test_Login_01 -->
-        <test-method is-config="true" signature="AfterTest(org.testng.ITestResult)[pri:0, instance:testcases.LoginTestCase@bcef303]" started-at="2023-03-28T22:34:19 ICT" name="AfterTest" finished-at="2023-03-28T22:34:20 ICT" duration-ms="493" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Test_Login_01 status=SUCCESS method=LoginTestCase.Test_Login_01()[pri:0, instance:testcases.LoginTestCase@bcef303] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AfterTest -->
-      </class> <!-- testcases.LoginTestCase -->
-    </test> <!-- Run on EDGE -->
   </suite> <!-- Suite Login -->
 </testng-results>

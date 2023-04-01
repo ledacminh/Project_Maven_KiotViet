@@ -4,6 +4,7 @@
        <listener class-name="actions.commons.TestListener"/>
     </listeners>
     <test name="Run on Chrome">
+        <parameter name="env" value="dev"/>
         <parameter name="browserName" value="chrome"/>
         <classes>
             <class name="testcases.LoginTestCase"/>
