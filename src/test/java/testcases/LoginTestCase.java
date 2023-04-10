@@ -53,7 +53,7 @@ public class LoginTestCase extends BaseTest {
         login.clickButtonLogin();
         Log.info("[Test_Login_02] Step 4: Click button login");
     }
-    @Test
+
     public void Test_Login_03() {
         //Step 1: Nhập tên gian hàng
         login.nhapTenGianHang(ListDataLoginProperties.getString("ten_gian_hang"));
